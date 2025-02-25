@@ -15,7 +15,7 @@ const VA_API_URL = 'https://api.vam.ac.uk/v2';
 app.get('/api/harvard/objects', async (req, res) => {
     try {
         const response = await axios.get(`${HARVARD_API_URL}/object`, {
-            params: { ...request.query, apikey: HARVARD_API_KEY }
+            params: { ...req.query, apikey: HARVARD_API_KEY }
         });
         res.json(response.data);
     } catch (error) {
