@@ -12,15 +12,15 @@ const HARVARD_API_URL = 'https://api.harvardartmuseums.org';
 const VA_API_URL = 'https://api.vam.ac.uk/v2';
 
 
-app.get('/api/harvard/objects', async (req, res) => {
+app.get('/api/harvard/objects', async (request, response) => {
     try {
         const response = await axios.get(`${HARVARD_API_URL}/object`, {
-            params: { ...req.query, apikey: HARVARD_API_KEY }
+            params: { ...request.query, apikey: HARVARD_API_KEY }
         });
-        res.json(response.data);
+        response.json(response.data);
     } catch (error) {
         console.error("Error fetching Harvard data:", error);
-        res.status(500).json({ message: "Error fetching Harvard data" });
+        response.status(500).json({ message: "Error fetching Harvard data" });
     }
 });
 
@@ -49,7 +49,7 @@ app.get('/api/harvard/objects/:id', async (req, res) => {
 });
 
 
-app.get('/api/va/objects/:id', async (req, res) => {
+app.get('/api/va/objects/:id', async (req, res) => { console.log(req.params)
     try {
         const response = await axios.get(`${VA_API_URL}/objects/${req.params.id}`);
         res.json(response.data);
