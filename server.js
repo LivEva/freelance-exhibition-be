@@ -51,7 +51,7 @@ app.get('/api/harvard/objects/:id', async (req, res) => {
 
 app.get('/api/va/objects/:id', async (req, res) => { console.log(req.params)
     try {
-        const response = await axios.get(`${VA_API_URL}/objects/${req.params.id}`);
+        const response = await axios.get(`${VA_API_URL}/object/${req.params.id}`);
         res.json(response.data);
         console.log(req.params.id, "what comes up")
     } catch (error) {
