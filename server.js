@@ -24,7 +24,7 @@ app.get('/api/harvard/objects', async (request, response) => {
     }
 });
 
-// Proxy route to fetch V&A data
+
 app.get('/api/va/objects', async (req, res) => {
     try {
         const response = await axios.get(`${VA_API_URL}/objects/search`, { params: req.query });
@@ -53,6 +53,7 @@ app.get('/api/va/objects/:id', async (req, res) => { console.log(req.params)
     try {
         const response = await axios.get(`${VA_API_URL}/objects/${req.params.id}`);
         res.json(response.data);
+        console.log(req.params.id, "what comes up here!")
     } catch (error) {
         console.error("Error fetching V&A object by ID:", error);
         res.status(500).json({ message: "Error fetching V&A object by ID" });
