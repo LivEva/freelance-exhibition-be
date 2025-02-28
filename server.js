@@ -1,11 +1,11 @@
 const express = require("express");
 const axios = require("axios");
-const cors = require("cors");
-
 const app = express();
+const compression = require('compression');
+
 const port = process.env.PORT || 4517;
 
-app.use(cors());
+app.use(compression());
 
 const HARVARD_API_KEY = process.env.HARVARD_API_KEY;
 const HARVARD_API_URL = 'https://api.harvardartmuseums.org';
