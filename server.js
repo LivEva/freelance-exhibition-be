@@ -2,13 +2,11 @@ const express = require("express");
 const axios = require("axios");
 const app = express();
 const cors = require("cors")
-const compression = require("compression");
+
 
 const port = process.env.PORT || 4517;
 
-app.use(cors());
-
-app.use(compression());
+app.use(cors({ origin: "*" })); 
 
 
 const HARVARD_API_KEY = process.env.HARVARD_API_KEY;
