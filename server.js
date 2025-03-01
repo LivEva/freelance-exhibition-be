@@ -2,11 +2,14 @@ const express = require("express");
 const axios = require("axios");
 const app = express();
 const cors = require("cors")
+const compression = require("compression");
 
 
 const port = process.env.PORT || 4517;
 
 app.use(cors({ origin: "http://localhost:5173" }));
+
+app.use(compression())
 
 
 
