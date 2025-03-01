@@ -8,8 +8,6 @@ const path = require('path');
 
 const port = process.env.PORT || 4517;
 
-app.use(cors({ origin: "http://localhost:5173" }));
-
 app.use(compression());
 
 app.use(express.static(path.join(__dirname, 'build')));
@@ -18,6 +16,16 @@ const HARVARD_API_KEY = process.env.HARVARD_API_KEY;
 const HARVARD_API_URL = 'https://api.harvardartmuseums.org';
 const VA_API_URL = 'https://api.vam.ac.uk/v2';
 
+const corsOptions = {
+    origin: [
+        "http://localhost:5173", 
+        "https://museum-exhibition.netlify.app" 
+    ],
+    methods: "GET, POST", 
+    allowedHeaders: "Content-Type, Authorization" 
+};
+
+app.use(cors(corsOptions)); 
 
 app.get('/api/harvard/objects', async (req, res) => {
     try {
