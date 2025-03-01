@@ -6,7 +6,8 @@ const cors = require("cors")
 
 const port = process.env.PORT || 4517;
 
-app.use(cors({ origin: "*" })); 
+app.use(cors({ origin: "http://localhost:5173" }));
+
 
 
 const HARVARD_API_KEY = process.env.HARVARD_API_KEY;
@@ -24,7 +25,7 @@ app.get('/api/harvard/objects', async (req, res) => {
         console.error("Error fetching Harvard data:", error);
         response.status(500).json({ message: "Error fetching Harvard data" });
     }
-});
+})
 
 
 app.get('/api/va/objects', async (req, res) => {
